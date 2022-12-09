@@ -20,7 +20,7 @@ services:
       - MYSQL_USER=tlc
       - MYSQL_PASSWORD=
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-root"]
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-proot"]
       interval: 5s
       timeout: 5s
       retries: 20
@@ -31,8 +31,18 @@ services:
       - "9001:9001"
     volumes:
       - ./APIKEY.txt:/opt/etherpad-lite/APIKEY.txt
+
   mail:
     image: bytemark/smtp
     restart: always
     ports:
       - "2525:25"
+  
+  front:
+    image: tlc_front:latest
+    hostname: front
+    ports:
+      - "4200:80"
+    depends_on:
+      - back
+    restart: always
