@@ -1,7 +1,9 @@
 version: "3.8"
+
 services:
   back:
     image: tlc_back:latest
+    container_name: tlc_back
     hostname: api
     ports:
       - "8080:8080"
@@ -27,6 +29,8 @@ services:
 
   etherpad:
     image: etherpad/etherpad:latest
+    container_name: etherpad
+    hostname: etherpad
     ports:
       - "9001:9001"
     volumes:
@@ -40,9 +44,12 @@ services:
   
   front:
     image: tlc_front:latest
+    container_name: tlc_front
     hostname: front
     ports:
       - "4200:80"
     depends_on:
       - back
     restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf

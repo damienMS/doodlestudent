@@ -1,7 +1,7 @@
 doodle:
   usepad: true
-  internalPadUrl: "http://localhost:9001/"
-  externalPadUrl: "http://localhost:9001/"
+  internalPadUrl: "http://etherpad:9001/"
+  externalPadUrl: "http://etherpad:9001/"
   padApiKey: "19d89ca52bc0fa4f19d6325464d9d7a032649b9fa68c111514627081e2784b4a"
   organizermail: "olivier.barais@gmail.com"
   tmpfolder: "/tmp/excelFiles"
@@ -16,17 +16,17 @@ quarkus:
   flyway:
     migrate-at-start: false
     baseline-on-migrate: false
-#    database:
-#      generation: none
-#      globally-quoted-identifiers: true
+  #    database:
+  #      generation: none
+  #      globally-quoted-identifiers: true
   mailer:
     from: test@quarkus.io
-#    host: smtp.sendgrid.net
+    #    host: smtp.sendgrid.net
     host: localhost
     port: 2525
-#    port: 465
-#    ssl: true
+    #    port: 465
+    #    ssl: true
 
-#    username: ""
-#    password: ""
+    #    username: ""
+    #    password: ""
     mock: false
