@@ -24,7 +24,6 @@ FROM nginx
 ## Copying the build from the build stage
 COPY --from=build /doodlestudent/front/dist/tlcfront /usr/share/nginx/html
 
-
 ## Expose on port 80
 EXPOSE 80
 
