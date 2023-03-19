@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   back:
-    image: tlc_back:latest
+    image: registry.carryboo.io/tlc_light/tlc_back:latest
     container_name: tlc_back
     hostname: api
     ports:
@@ -41,9 +41,9 @@ services:
     restart: always
     ports:
       - "2525:25"
-  
+
   front:
-    image: tlc_front:latest
+    image: registry.carryboo.io/tlc_light/tlc_front:latest
     container_name: tlc_front
     hostname: front
     ports:

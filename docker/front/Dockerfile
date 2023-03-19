@@ -1,11 +1,6 @@
-FROM ubuntu:20.04 AS build
+FROM alpine:3.16 as BUILD
 
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update &&\
-    apt-get install -y git \
-    nodejs \
-    npm
+RUN apk add --no-cache git nodejs npm
 
 ## Cloning the repository
 RUN git clone https://github.com/damienMS/doodlestudent.git
