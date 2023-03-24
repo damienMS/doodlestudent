@@ -18,6 +18,10 @@ FROM nginx
 
 ## Copying the build from the build stage
 COPY --from=build /doodlestudent/front/dist/tlcfront /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+
+VOLUME /usr/share/nginx/html
+VOLUME /etc/nginx/
 
 ## Expose on port 80
 EXPOSE 80
