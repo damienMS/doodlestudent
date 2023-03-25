@@ -1,6 +1,7 @@
-FROM alpine:3.16 as BUILD
+## BUILD phase
+FROM node:10-alpine AS build
 
-RUN apk add --no-cache git nodejs npm
+RUN apk add --no-cache git
 
 ## Cloning the repository
 RUN git clone https://github.com/damienMS/doodlestudent.git
@@ -11,19 +12,12 @@ WORKDIR /doodlestudent/front
 ## Installing the dependencies
 RUN npm install
 
-## Compiling the project
+## Compiling the project
 RUN npm run build
 
-FROM nginx
-
-## Copying the build from the build stage
+## RUN phase
+FROM nginx:1-alpine
 COPY --from=build /doodlestudent/front/dist/tlcfront /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
-
-VOLUME /usr/share/nginx/html
-VOLUME /etc/nginx/
-
-## Expose on port 80
-EXPOSE 80
 
 
