@@ -13,7 +13,7 @@ services:
     restart: always
     environment:
       - doodle.internalPadUrl=http://etherpad:9001/
-      - doodle.externalPadUrl=http://etherpad:9001/
+      - doodle.externalPadUrl=http://tlc-etherpad.carryboo.io/
       - quarkus.datasource.jdbc.url=jdbc:mysql://db:3306/tlc?useUnicode=true&serverTimezone=Europe/Paris
 
   db:
@@ -57,11 +57,11 @@ services:
       - "2525:25"
 
   front:
-    image: registry.carryboo.io/tlc_light/tlc_front_tetine:latest
+    image: registry.carryboo.io/tlc_light/tlc_front:latest
     container_name: tlc_front
     hostname: front
     ports:
-      - "4200:80"
+      - "80:80"
     depends_on:
       - back
     restart: always

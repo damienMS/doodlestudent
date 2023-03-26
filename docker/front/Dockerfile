@@ -1,5 +1,5 @@
 ## BUILD phase
-FROM node:10-alpine AS build
+FROM node:12-alpine AS build
 
 RUN apk add --no-cache git
 
